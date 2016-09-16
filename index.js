@@ -4,7 +4,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-function start(config) {
+function start(dirname) {
+    var config = {};
+    try {
+        config = require(dirname + '/config/config');
+    }
+    catch (err) {}
+
     var app = express();
     var server = http.createServer(app);
     app.server = server;
@@ -23,10 +29,10 @@ function start(config) {
     app.use(pipeline.session);
 
     // Set up the public site
-    app.use("/bower_components", express.static(__dirname + "/bower_components"));
-    app.use("/public", express.static(__dirname + "/public"));
+    app.use("/bower_components", express.static(dirname + "/bower_components"));
+    app.use("/public", express.static(dirname + "/public"));
     app.get('/', function(req, res, next) {
-        res.sendFile(__dirname + "/public/index.html");
+        res.sendFile(dirname + "/public/index.html");
     });
     app.get("/config.js", function(req, res, next) {
         var secure = config.hasOwnProperty("secure") ? config.secure : true;
@@ -46,7 +52,7 @@ function start(config) {
     try {
         var authorization = require('./authorization')(app, config);
         require('./distributor')(server, pipeline, authorization, config);
-        app.use("/private", authorization.require, express.static(__dirname + "/private"));
+        app.use("/private", authorization.require, express.static(dirname + "/private"));
         setStatus("All good!");
     }
     catch (err) {

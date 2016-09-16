@@ -21,7 +21,6 @@ module.exports = function( app, config ) {
             callbackURL: baseUrl + '/loginGoogle/callback'
         },
         function(accessToken, refreshToken, profile, done) {
-            debug('Logged in: ' + JSON.stringify(profile));
             done(null, {
                 provider: profile.provider,
                 id: profile.id,
@@ -55,7 +54,7 @@ module.exports = function( app, config ) {
         res.redirect( redirect_to );
     }
     app.get('/loginGoogle', authenticate);
-    app.post('/loginGoogle/callback', authenticate, authenticationCallback);
+    app.get('/loginGoogle/callback', authenticate, authenticationCallback);
 
     return {
         initialize: doPassportInitialize,
