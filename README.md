@@ -103,17 +103,11 @@ Answer all of the questions. This will create a bower.json file.
 
 ### Install packages
 
-Install the Jinaga packages.
+Install the Jinaga App packages.
 
 ```
 npm install --save jinaga.app
-bower install --save jinaga
-```
-
-Install your favorite MVVM framework.
-
-```
-bower install --save knockout
+bower install --save jinaga.app
 ```
 
 Install your favorite CSS framework.
