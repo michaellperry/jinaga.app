@@ -99,8 +99,7 @@ npm install --save bower
 bower init
 ```
 
-Choose the "globals" module type, and answer all of the other questions. This will
-create a bower.json file.
+Answer all of the questions. This will create a bower.json file.
 
 ### Install packages
 
@@ -111,11 +110,10 @@ npm install --save jinaga.app
 bower install --save jinaga
 ```
 
-Install your favorite application libraries.
+Install your favorite MVVM framework.
 
 ```
 bower install --save knockout
-bower install --save jquery
 ```
 
 Install your favorite CSS framework.
@@ -166,7 +164,7 @@ To set up your application, add an authorized JavaScript origin from
 http://localhost:8080, and an authorized redirect URI to
 http://localhost:8080/loginGoogle/callback.
 
-Test it by going to http://localhost:8080/status.
+Now start the app by running `node server`, and test it by going to http://localhost:8080/status.
 
 ### Content folders
 
@@ -215,4 +213,4 @@ function MainViewModel() {
 }
 ```
 
-Test it by going to http://localhost:8080.
+Start the app again (`node server`), and test it by going to http://localhost:8080.
