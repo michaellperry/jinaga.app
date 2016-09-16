@@ -1,0 +1,19 @@
+{
+  "name": "jinaga.app",
+  "version": "1.0.0",
+  "description": "The simplest way to build a collaborative web app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/michaellperry/jinaga.app.git"
+  },
+  "author": "Michael L Perry",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michaellperry/jinaga.app/issues"
+  },
+  "homepage": "https://github.com/michaellperry/jinaga.app#readme"
+}
