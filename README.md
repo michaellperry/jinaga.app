@@ -146,9 +146,13 @@ module.exports = {
         clientId: 'xxx',
         clientSecret: 'yyy'
     },
-    mongoDB: 'mongodb://localhost:27017/dev'
+    mongoDB: 'mongodb://localhost:27017/dev',
+	secure: false
 };
 ```
+
+The `secure` setting controls whether the Jinaga connection uses TLS, so you'll want
+this to be false for development.
 
 Log on to the [Google Developer](https://console.developers.google.com/apis/credentials)
 site in order to get your `clientId` and `clientSecret`. If you don't want to secure
