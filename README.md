@@ -162,7 +162,13 @@ To set up your application, add an authorized JavaScript origin from
 http://localhost:8080, and an authorized redirect URI to
 http://localhost:8080/loginGoogle/callback.
 
-Now start the app by running `node server`, and test it by going to http://localhost:8080/status.
+Now start the app by running:
+
+```
+DEBUG=jinaga.* node server
+```
+
+Test it by going to http://localhost:8080/status.
 
 ### Content folders
 
@@ -186,6 +192,7 @@ Use your favorite CSS framework to create a shell page at `index.html`:
         <script src="/bower_components/foundation-sites/dist/foundation.min.js"></script>
         <script src="/bower_components/knockout/dist/knockout.js"></script>
         <script src="/bower_components/jinaga/jinaga.js"></script>
+        <script src="/bower_components/jinaga.app/jinaga.knockout.js"></script>
         <script src="/config.js"></script>
         <script src="/public/myapp.js"></script>
 
@@ -211,4 +218,6 @@ function MainViewModel() {
 }
 ```
 
-Start the app again (`node server`), and test it by going to http://localhost:8080.
+Start the app again (`DEBUG=jinaga.* node server`), and test it by going to http://localhost:8080.
+
+Continue on to build [Your First App](https://github.com/michaellperry/jinaga.app/blob/master/YourFirstApp.md).
