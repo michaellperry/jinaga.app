@@ -101,6 +101,16 @@ bower init
 
 Answer all of the questions. This will create a bower.json file.
 
+If that command didn't work, then you might need to install Bower globally.
+
+```
+npm install -g bower
+```
+
+Furthermore, if you are using Windows, you might need to run this in a DOS shell
+rather than Bash. When you have Bower installed and initialized, you can install
+the packages.
+
 ### Install packages
 
 Install the Jinaga App packages.
@@ -176,7 +186,7 @@ Create a couple of folders: `public` and `private`. These will contain your site
 content. The public folder will not require authentication, but the private folder will.
 Create an `index.html` file in the public folder, which will be the root of your site.
 
-Use your favorite CSS framework to create a shell page at `index.html`:
+Use your favorite CSS framework to create a shell page at `public/index.html`:
 
 ```html
 <html>
@@ -209,8 +219,8 @@ components their configuration.
 
 ### View model
 
-Finally, create a file for your application in the public folder called `myapp.js` (or
-whatever). This is the last file that your page loads. For now, just create a view model:
+Finally, create a file for your application in the public folder called `myapp.js`.
+This is the last file that your page loads. For now, just create a view model:
 
 ```JavaScript
 function MainViewModel() {
@@ -220,4 +230,4 @@ function MainViewModel() {
 
 Start the app again (`DEBUG=jinaga.* node server`), and test it by going to http://localhost:8080.
 
-Continue on to build [Your First App](https://github.com/michaellperry/jinaga.app/blob/master/YourFirstApp.md).
+Continue on to build [Your First App](https://github.com/michaellperry/jinaga.app.client/blob/master/YourFirstApp.md).
