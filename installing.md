@@ -70,7 +70,9 @@ module.exports = {
     baseUrl: 'http://localhost:8080',
     google: {
         clientId: 'xxx',
-        clientSecret: 'yyy'
+        clientSecret: 'yyy',
+        loginUrl: '/loginGoogle',
+        redirectUrl: '/loginGoogle/callback'
     },
     mongoDB: 'mongodb://localhost:27017/dev',
 	secure: false
@@ -79,9 +81,29 @@ module.exports = {
 
 The `secure` setting controls whether the Jinaga connection uses TLS, so you'll want this to be false for development.
 
-Log on to the [Google Developer](https://console.developers.google.com/apis/credentials) site in order to get your `clientId` and `clientSecret`. If you don't want to secure your app yet, then you can leave it as xxx and yyy for now.
+Log on to the [Google Developer](https://console.developers.google.com/apis/credentials) site in order to get your `clientId` and `clientSecret`. You may also set the values through the environment variables `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`. If you don't want to secure your app yet, then you can leave it as xxx and yyy for now.
 
-To set up your application, add an authorized JavaScript origin from http://localhost:8080, and an authorized redirect URI to http://localhost:8080/loginGoogle/callback.
+The `loginUrl` and `redirectUrl` parameters are optional. If you would like to customize those URLs, you may do so. Otherwise, the defaults are the values you see above. Values are relative to `baseUrl`. Configure the Google Developer Console to use the correct redirect URL. For example, if taking the defaults, add an authorized JavaScript origin from http://localhost:8080, and an authorized redirect URI to http://localhost:8080/loginGoogle/callback.
+
+If you are using Active Directory instead, change your configuration to the following:
+
+```JavaScript
+module.exports = {
+    baseUrl: 'http://localhost:8080',
+    ad: {
+        realm: 'http://mydomain',
+        logoutUrl: '/logout',
+        identityProviderUrl: 'https://login.windows.net/my-tenant-id/wsfed',
+        identityMetadata: 'https://login.windows.net/my-tenant-id/federationmetadata/2007-06/federationmetadata.xml'
+        loginUrl: '/loginAd',
+        redirectUrl: '/loginAd/callback'
+    },
+    mongoDB: 'mongodb://localhost:27017/dev',
+	secure: false
+};
+```
+
+Again, the `loginUrl` and `redirectUrl` parameters are optional. If not specified, they will take the values shown above. You may also specify the values for AD using the environment variables `AD_REALM`, `AD_LOGOUT_URL`, `AD_IDENTITY_PROVIDER_URL`, and `AD_IDENTITY_METADATA`.
 
 Now start the app by running:
 
