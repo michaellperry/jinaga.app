@@ -35,7 +35,12 @@ function start(dirname) {
         res.sendFile(dirname + "/public/index.html");
     });
     app.get("/config.js", function(req, res, next) {
-        var secure = config.hasOwnProperty("secure") ? config.secure : true;
+        var secure =
+            (typeof process.env.JINAGA_SECURE !== 'undefined') ?
+                (process.env.JINAGA_SECURE === 'true') :
+            config.hasOwnProperty("secure") ?
+                config.secure :
+            true;
         res.send(
             "var distributorUrl = \"" + (secure ? "wss" : "ws") + "://" + req.headers.host + "/\";\n" +
             "var loginUrl = \"" + (secure ? "https" : "http") + "://" + req.headers.host + "/public/login.html\";\n");
