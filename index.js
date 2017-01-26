@@ -34,6 +34,9 @@ function start(dirname) {
     app.get('/', function(req, res, next) {
         res.sendFile(dirname + "/public/index.html");
     });
+    app.get('/favicon.ico', function(req, res, next) {
+        res.sendFile(dirname + "/public/favicon.ico");
+    });
     app.get("/config.js", function(req, res, next) {
         var secure =
             (typeof process.env.JINAGA_SECURE !== 'undefined') ?
