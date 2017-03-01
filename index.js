@@ -3,6 +3,8 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var Jinaga = require('jinaga');
+var JinagaConnector = require('jinaga/connector');
 
 function start(dirname) {
     var config = {};
@@ -13,6 +15,7 @@ function start(dirname) {
 
     var app = express();
     var server = http.createServer(app);
+    var j;
     app.server = server;
 
     var pipeline = {
@@ -59,7 +62,9 @@ function start(dirname) {
 
     try {
         var authorization = require('./authorization')(app, config);
-        require('./distributor')(server, pipeline, authorization, config);
+        var distributor = require('./distributor')(server, pipeline, authorization, config);
+        j = new Jinaga();
+        j.sync(new JinagaConnector(distributor));
         app.use("/private", authorization.require, express.static(dirname + "/private"));
         setStatus("All good!");
     }
@@ -74,6 +79,8 @@ function start(dirname) {
 
         console.log('Jinaga app listening at http://%s:%s', host, port);
     });
+
+    return { app: app, j: j };
 }
 
 exports.start = start;

@@ -22,5 +22,5 @@ module.exports = function( server, pipeline, authorization, config ) {
         handler(request, {}, done);
     }
 
-    JinagaDistributor.attach(mongo, mongo, server, authenticateUser);
+    return JinagaDistributor.attach(mongo, mongo, server, authenticateUser);
 };
