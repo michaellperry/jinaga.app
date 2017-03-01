@@ -1,6 +1,6 @@
 {
   "name": "jinaga.app",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "The simplest way to build a collaborative web app",
   "main": "index.js",
   "scripts": {
@@ -17,12 +17,12 @@
   },
   "homepage": "https://github.com/michaellperry/jinaga.app#readme",
   "dependencies": {
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.16.1",
     "chain-middleware": "^1.0.1",
     "cookie-parser": "^1.4.3",
-    "express": "^4.14.0",
-    "express-session": "^1.14.1",
-    "jinaga": "^1.8.1",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "jinaga": "^1.8.3",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0"
   }
